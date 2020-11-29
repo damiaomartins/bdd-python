@@ -7,3 +7,7 @@ class EmployeeService:
 
     def add(self, employee):
         self.repository.save(employee)
+
+    @staticmethod
+    def get_instance(repository: EmployeeRepository):
+        return EmployeeService(repository)

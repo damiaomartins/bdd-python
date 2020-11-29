@@ -15,8 +15,8 @@ def create_app() -> Flask:
         level=logging.INFO
     )
     app = Flask(__name__)
-    repository = EmployeeRepository()
-    service = EmployeeService(repository)
+    repository = EmployeeRepository.get_instance()
+    service = EmployeeService.get_instance(repository)
     EmployeeController(app, service)
     return app
 

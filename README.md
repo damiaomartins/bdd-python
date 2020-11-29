@@ -3,7 +3,7 @@ A simple Flask application used for demonstration of the BDD testing features
 
 ## Running the application
 Export the path to app:
-`export FLASK_APP="src/main/main.py"` 
+`export FLASK_APP="src/main/app.py"` 
 
 Run flask:
 `python -m flask run`
