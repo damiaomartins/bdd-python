@@ -1,13 +1,13 @@
 import logging
 
 
-class EmployeeRepository:
+class PayrollRepository:
     def __init__(self):
         pass
 
-    def save(self, employee):
-        logging.info(employee)
-
     @staticmethod
     def get_instance():
-        return EmployeeRepository()
+        return PayrollRepository()
+
+    def save(self, payment):
+        logging.error(f'Saving payment={payment}')

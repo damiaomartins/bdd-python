@@ -1,2 +1,2 @@
-pytest==6.1.2
+behave==1.2.6
 PyHamcrest==2.0.2

@@ -2,11 +2,9 @@ import logging
 
 from flask import Flask
 
-from .controller import EmployeeController
-from .repository import EmployeeRepository
-from .service import EmployeeService
-
-teste = 'abc'
+from .controller import PayrollController
+from .repository import PayrollRepository
+from .service import PayrollService
 
 
 def create_app() -> Flask:
@@ -15,9 +13,9 @@ def create_app() -> Flask:
         level=logging.INFO
     )
     app = Flask(__name__)
-    repository = EmployeeRepository.get_instance()
-    service = EmployeeService.get_instance(repository)
-    EmployeeController(app, service)
+    repository = PayrollRepository.get_instance()
+    service = PayrollService.get_instance(repository)
+    PayrollController(app, service)
     return app
 
 
