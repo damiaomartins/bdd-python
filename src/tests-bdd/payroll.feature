@@ -4,13 +4,13 @@ Feature: Folha de pagamento de funcionários por hora
     Given o ambiente de testes esteja configurado
 
 
-  Scenario: Funcionário horista precisa receber 50% de hora extra quando ultrapassar 168 horas no mes
+  Scenario: Funcionário precisa receber 50% de hora extra quando ultrapassar 168 horas no mes
     Given O funcionário 123 que recebe 30 reais por hora, submeteu um total de 200 horas no último mes
     When For executada o sistema de pagamento
     Then O pagamento do funcionário dará um total de 6480 reais, sendo 5040 de horas normais e 1440 de horas extras
 
 
-  Scenario Template: Funcionário horista precisa receber 50% de hora extra quando ultrapassar 40 horas na semana
+  Scenario Template: Funcionário precisa receber 50% de hora extra quando ultrapassar 168 horas no mes
     Given O funcionário <id> que recebe <valor_hora> reais por hora, submeteu um total de <horas_trabalhadas> horas no último mes
     When For executada o sistema de pagamento
     Then O pagamento do funcionário dará um total de <salario_bruto> reais, sendo <salario_horas_normais> de horas normais e <salario_horas_extras> de horas extras

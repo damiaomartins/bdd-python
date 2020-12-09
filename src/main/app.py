@@ -17,6 +17,3 @@ def create_app() -> Flask:
     service = PayrollService.get_instance(repository)
     PayrollController(app, service)
     return app
-
-
-print('main loaded')

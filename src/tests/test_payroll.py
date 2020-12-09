@@ -36,11 +36,6 @@ def test_successful_payment(client):
             "extra": 1440,
             "normal": 5040,
             "total": 6480
-        },
-        "worked_hours": {
-            "extra": 32,
-            "normal": 168,
-            "total": 200
         }
     }
     assert_that(response.status_code, equal_to(200))
@@ -93,7 +88,3 @@ def __assert_payment_response(actual, expected):
     assert_that(payment_details['payment']['normal'], expected['payment']['normal'])
     assert_that(payment_details['payment']['extra'], expected['payment']['extra'])
     assert_that(payment_details['payment']['total'], expected['payment']['total'])
-
-    assert_that(payment_details['worked_hours']['normal'], expected['worked_hours']['normal'])
-    assert_that(payment_details['worked_hours']['extra'], expected['worked_hours']['extra'])
-    assert_that(payment_details['worked_hours']['total'], expected['worked_hours']['total'])

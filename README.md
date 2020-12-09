@@ -19,6 +19,15 @@ Install test dependencies:
 
 `pip install -r src/tests/requirements.txt`
 
+Run pytest:
+
+`python -m pytest`
+
+## Running the BDD tests
+Install test dependencies:
+
+`pip install -r src/tests-bdd/requirements.txt`
+
 Run behave:
 
 `python -m behave`

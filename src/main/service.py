@@ -42,13 +42,13 @@ class PayrollService:
         }
 
     def __calculate_payment(self, worked_hours, rate):
-        decimal_rate = Decimal(str(rate))
-        decimal_extra_hours = Decimal(str(worked_hours['extra']))
+        rate_decimal = Decimal(str(rate))
+        extra_hours_decimal = Decimal(str(worked_hours['extra']))
 
-        normal_payment = Decimal(str(worked_hours['normal'])) * decimal_rate
+        normal_payment = Decimal(str(worked_hours['normal'])) * rate_decimal
 
-        extra_payment = decimal_extra_hours * decimal_rate + \
-                        ((decimal_extra_hours * self.EXTRA_HOUR_PERCENTAGE / 100) * decimal_rate)
+        extra_payment = (extra_hours_decimal * rate_decimal +
+                         ((extra_hours_decimal * self.EXTRA_HOUR_PERCENTAGE / 100) * rate_decimal))
 
         total_payment = normal_payment + extra_payment
 

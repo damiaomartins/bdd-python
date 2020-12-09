@@ -44,5 +44,5 @@ class PayrollView(MethodView):
 
     def __validate_attribute(self, log_work, name, custom_validator=lambda x: True):
         actual_value = log_work.get(name)
-        if not (actual_value and custom_validator(actual_value)):
+        if not actual_value or not custom_validator(actual_value):
             raise AttributeError(f'Invalid attribute: {name}')
