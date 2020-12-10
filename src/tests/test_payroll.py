@@ -39,7 +39,18 @@ def test_successful_payment(client):
         }
     }
     assert_that(response.status_code, equal_to(200))
-    __assert_payment_response(response_data, expected_response)
+
+    assert_that(response_data.get('error'), none())
+    assert_that(response_data.get('data'), not_none())
+
+    payment_details = response_data['data']
+    assert_that(payment_details['month'], equal_to(expected_response['month']))
+    assert_that(payment_details['employee_id'], equal_to(expected_response['employee_id']))
+    assert_that(payment_details['rate'], equal_to(expected_response['rate']))
+
+    assert_that(payment_details['payment']['normal'], equal_to(expected_response['payment']['normal']))
+    assert_that(payment_details['payment']['extra'], equal_to(expected_response['payment']['extra']))
+    assert_that(payment_details['payment']['total'], equal_to(expected_response['payment']['total']))
 
 
 def test_invalid_rate(client):
@@ -75,16 +86,3 @@ def __assert_error_response(response_data):
     assert_that(response_data.get('error'), is_not(None))
     assert_that(response_data.get('data'), is_(None))
 
-
-def __assert_payment_response(actual, expected):
-    assert_that(actual.get('error'), is_(None))
-    assert_that(actual.get('data'), is_not(None))
-
-    payment_details = actual['data']
-    assert_that(payment_details['month'], expected['month'])
-    assert_that(payment_details['employee_id'], expected['employee_id'])
-    assert_that(payment_details['rate'], expected['rate'])
-
-    assert_that(payment_details['payment']['normal'], expected['payment']['normal'])
-    assert_that(payment_details['payment']['extra'], expected['payment']['extra'])
-    assert_that(payment_details['payment']['total'], expected['payment']['total'])
